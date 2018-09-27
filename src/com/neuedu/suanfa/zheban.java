@@ -1,6 +1,6 @@
 package com.neuedu.suanfa;
 
-public class zheban {
+public class zheban<T> implements Comparable<T> {
 	
 	
 	
@@ -23,6 +23,13 @@ public class zheban {
 		return -1;
 	}
 	
+	
+	public static int findIndexC(int[] array,int x){
+		
+		
+		return -1;
+	}
+	
 	//要求，查找某个数在数组中的位置，如果没有返回-1
 	public static void main(String[] args) {
 		//折半查找必须是有序的数
@@ -32,6 +39,14 @@ public class zheban {
 		int index = findIndex(array,52);
 		System.out.println(index);
 		
+	}
+
+
+	@Override
+	public int compareTo(T o) {
+		// TODO Auto-generated method stub
+		
+		return 0;
 	}
 
 }
