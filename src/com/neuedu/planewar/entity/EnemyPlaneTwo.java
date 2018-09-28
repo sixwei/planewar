@@ -1,5 +1,6 @@
 package com.neuedu.planewar.entity;
 
+import java.awt.Graphics;
 import java.awt.Image;
 
 import com.neuedu.planewar.client.PlanewarClient;
@@ -26,6 +27,7 @@ public class EnemyPlaneTwo extends Enemyplane {
 		  this.y=y;
 		  this.planeimages = enemyplane;
 		  this.speed=10;
+		  this.live = true;
 	  }
 	  
 	
@@ -46,8 +48,11 @@ public class EnemyPlaneTwo extends Enemyplane {
 			x-=speed;
 		}
 		
-		if(r.nextInt(1000)>950) fire();
+		if(r.nextInt(1000)>950) 
+			fire();
 	}
+	
+
 	 
 	  
 

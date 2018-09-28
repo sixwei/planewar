@@ -12,6 +12,8 @@ import com.neuedu.planewar.entity.Missiler;
 import com.neuedu.planewar.entity.Plane;
 import com.neuedu.planewar.util.FrameUtil;
 import com.neuedu.planewar.util.ImageUtil;
+import com.neuedu.planewar.util.MusicUtil;
+import com.neuedu.planewar.util.SoundsUtil;
 
 public class PlanewarClient extends FrameUtil {
 
@@ -26,7 +28,7 @@ public class PlanewarClient extends FrameUtil {
 	
 	//Missler 应该为一个数组有多个实例
 	//Missiler missiler = new Missiler(300,500);
-	
+	//敌我双方的子弹容器
 	public ArrayList<Missiler> missilers = new ArrayList<>();
 	
 	//单个敌机动图
@@ -59,6 +61,8 @@ public class PlanewarClient extends FrameUtil {
 			}
 		});
 		
+		new MusicUtil(false).start();
+		
 		//加载敌方一号飞机
 		for(int i=0;i<10;++i) {
 			Enemyplane enemyplane = new Enemyplane(this,160+i*120,300);
@@ -86,6 +90,7 @@ public class PlanewarClient extends FrameUtil {
 		for(int i=0;i<missilers.size();++i) {
 			Missiler missiler = missilers.get(i);
 			missiler.draw(g);
+			//在绘制子弹的时候进行判断是否打到了敌机
 			missiler.hitplane(enemyplanes);
 			
 		}
@@ -106,6 +111,5 @@ public class PlanewarClient extends FrameUtil {
 	
 	public static void main(String[] args) {
 		new PlanewarClient().load();
-		
 	}
 }

@@ -1,19 +1,25 @@
 package com.neuedu.gof.staticfactory;
 
-import java.util.Calendar;
 
 public abstract class MyCalendar {
-	
-	
-	
-	
-	public static  class Builder{
-		
-		
-		public static MyCalender getInstance(){
-			
-			return MyCalendar.class.getClassLoader().loadClass("MyCalendar");
-		}
-	}
 
+
+	
+	
+	public static MyCalendar getInstance() {
+		
+		return create();
+	}
+	
+	
+	public static MyCalendar create() {
+		return new MyCalendar() {
+		};
+	}
+	
+	
+	public void print() {
+		System.out.println("这是一个静态的方法");
+	}
+	
 }

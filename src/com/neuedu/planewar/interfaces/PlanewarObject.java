@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 
 import com.neuedu.planewar.client.PlanewarClient;
+import com.neuedu.planewar.constant.Constant;
 
 public abstract class PlanewarObject implements MoveAble, DrawAble {
 
@@ -28,6 +29,7 @@ public abstract class PlanewarObject implements MoveAble, DrawAble {
 	public int width;
 	public int height;
 	
+	//判断飞机是否存活(用子弹进行打击) 判断子弹是否出界
 	public boolean live=true;
 	
 
@@ -44,6 +46,15 @@ public abstract class PlanewarObject implements MoveAble, DrawAble {
 	
 	public Rectangle getRectangle() {
 		return new Rectangle(x,y,width,height);
+	}
+	
+	
+	public void outOfBounds() {
+		if(x<-500||x>Constant.GAME_WIDTH+500
+				||y<-500||y>Constant.GAME_HEIGHT+500) {
+			live=false;
+			pwc.missilers.remove(this);
+		}
 	}
 	
 
